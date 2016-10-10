@@ -1,0 +1,17 @@
+version: '2'
+
+volumes:
+  ssl-certificates: ~
+
+services:
+  nginx:
+    build:  .
+    image:  cubicmushroom/nginx-letsencrypt
+    environment:
+      DOMAINS:            www.example.com
+      AGREE_TOS:          'yes'
+      LETSENCRYPT_EMAIL:  me@example.com
+      WEBROOT:            /var/www/html
+      CERTBOT_STAGING:    'yes'
+    volumes:
+      - ssl-certificates:/etc/letsencrypt
