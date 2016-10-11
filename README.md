@@ -12,7 +12,6 @@ Usage
 You must agree the Terms of Service for the letsencrypt service, by setting the `AGREE_TOS` environment variable to 
 'yes' when running the container.  By doing this, you are accpeting the Terms of Service, as layed out by letsencrypt at 
 the time of use.
-  
 
 
 Docker compose file…
@@ -30,15 +29,15 @@ Docker compose file…
           DOMAINS:            www.example.com
           AGREE_TOS:          'yes'
           LETSENCRYPT_EMAIL:  me@example.com
-          WEBROOT:            /var/www/html
+          WEB_ROOT:           /var/www/html
         volumes:
           - ssl-certificates:/etc/letsencrypt
 
 
 Get initial SSL certificates…
 
-    $ docker-compose run --rm --entrypoint /entrypoints/setup-certs.sh nginx
-
+    $ docker-compose run --entrypoint /get-certs nginx
+    
 If you want to run this against the letsencrypt staging servers you can include the CERTBOT_STAGING environment variable 
 set to anything truthy…
 
@@ -55,7 +54,7 @@ set to anything truthy…
           DOMAINS:            www.example.com
           AGREE_TOS:          'yes'
           LETSENCRYPT_EMAIL:  me@example.com
-          WEBROOT:            /var/www/html
+          WEB_ROOT:           /var/www/html
           CERTBOT_STAGING:    'yes'
         volumes:
           - ssl-certificates:/etc/letsencrypt

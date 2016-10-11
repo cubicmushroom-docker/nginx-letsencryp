@@ -11,7 +11,7 @@ services:
       DOMAINS:            www.example.com
       AGREE_TOS:          'yes'
       LETSENCRYPT_EMAIL:  me@example.com
-      WEBROOT:            /var/www/html
+      WEB_ROOT:           /var/www/html
       CERTBOT_STAGING:    'yes'
     volumes:
       - ssl-certificates:/etc/letsencrypt

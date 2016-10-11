@@ -9,12 +9,5 @@ RUN apt-get update && apt-get upgrade -y
 
 RUN apt-get install -y certbot -t jessie-backports
 
-RUN rm /etc/nginx/conf.d/default.conf
-RUN mkdir -p /etc/nginx/sites-enabled
-
-# Add the master conf file in
-ADD conf/* /etc/nginx/
-
-ADD sites/* /etc/nginx/sites-available/
-
-ADD entrypoints/* /entrypoints/
+ADD sites /sites
+ADD entrypoints/get-certs /get-certs
