@@ -9,5 +9,5 @@ RUN apt-get update && apt-get upgrade -y
 
 RUN apt-get install -y certbot -t jessie-backports
 
-ADD ./sites /sites
-ADD ./entrypoints/get-certs /get-certs
+ADD sites sites
+ADD entrypoints/get-certs get-certs
