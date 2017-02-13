@@ -9,7 +9,6 @@ RUN apt-get update && apt-get upgrade -y
 
 RUN apt-get install -y certbot -t jessie-backports
 
-ADD sites sites
 ADD entrypoints/certs /certs
 
 RUN (crontab -l 2>/dev/null; echo "0 1 * * * certbot renew") | crontab -
